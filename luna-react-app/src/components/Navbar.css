@@ -1,0 +1,41 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #fff;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.logo img{
+    width: 40px;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.nav ul li {
+    display: inline;
+}
+
+.nav ul li button {
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.nav .sign-in {
+    background-color: #fff;
+    border: 1px solid #000;
+}
+
+.nav .register {
+    background-color: #000;
+    color: #fff;
+}

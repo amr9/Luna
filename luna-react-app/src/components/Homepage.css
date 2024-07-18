@@ -1,0 +1,102 @@
+.homepage {
+    font-family: Arial, sans-serif;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    background-color: #f8f8f8;
+    text-align: center;
+}
+
+.heroContent {
+    max-width: 50%;
+}
+
+.hero h1 {
+    font-size: 3rem;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    color: #777;
+}
+
+.hero-buttons button {
+    padding: 1rem 2rem;
+    margin: 1rem 0.5rem;
+    border: none;
+    cursor: pointer;
+}
+
+.hero .sign-in {
+    background-color: #fff;
+    border: 1px solid #000;
+}
+
+.hero .register {
+    background-color: #000;
+    color: #fff;
+}
+
+.hero-image {
+    width: 50%;
+    height: 300px;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: #777;
+}
+
+.quotes {
+    padding: 2rem;
+    text-align: center;
+}
+
+.quote-cards {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.quote-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    width: 400px;
+    text-align: left;
+}
+.quote-card address{
+    font-weight: bold;
+}
+
+.quote-author {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.author-name {
+    color: rgb(90, 90, 90, 1);
+}
+.author-role {
+    color: #777777;
+}
+.quote-author img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.Image-red {
+    width: 780px;
+    height: 300px;
+    object-fit: cover;
+}
+
+

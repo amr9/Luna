@@ -1,20 +1,24 @@
 import base64
+from io import BytesIO
+
 import cv2
-import numpy as np
 import mediapipe as mp
+import numpy as np
+from PIL import Image as PilImage
+from django.contrib.auth import authenticate
 from django.http import JsonResponse
-from rest_framework.authtoken.models import Token
-from rest_framework.permissions import IsAuthenticated, AllowAny
-from rest_framework.views import APIView
-from rest_framework.parsers import MultiPartParser, FormParser
-from rest_framework.response import Response
-from rest_framework import status
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
-from PIL import Image as PilImage
-from io import BytesIO
+from rest_framework import status
+from rest_framework.authtoken.models import Token
+from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
 from hair_color_changer_app.models import User, Image
-from hair_color_changer_app.serializers import UserSerializer, LoginSerializer, UserUpdateSerializer
+from hair_color_changer_app.serializers import UserSerializer, LoginSerializer, UserUpdateSerializer, \
+    UserImageSerializer
 
 
 class HairColorChanger(APIView):
@@ -88,14 +92,16 @@ class Login(APIView):
             username = serializer.validated_data['username']
             password = serializer.validated_data['password']
 
-            user = User.objects.get(username=username)
-
-            if user is not None and user.check_password(password):
+            user = authenticate(username=username, password=password)
+            if user is not None:
                 token, created = Token.objects.get_or_create(user=user)
-                return Response({'token': token.key}, status=status.HTTP_200_OK)
+
+                return Response({'message': 'Successfully logged in', 'token': token.key}, status=status.HTTP_200_OK)
             else:
-                return Response({'error': 'Invalid Credentials'}, status=status.HTTP_401_UNAUTHORIZED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+                return Response({'errors': ['Invalid credentials']},
+                                status=status.HTTP_401_UNAUTHORIZED)
+
+        return Response({'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class Logout(APIView):
@@ -118,6 +124,7 @@ class Register(APIView):
             serializer.save()
 
             return Response({
+                'message': 'successfully registered',
                 'user': serializer.data,
             }, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -133,4 +140,13 @@ class UpdateUser(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class UserImages(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request):
+        user = request.user
+        serializer = UserImageSerializer(user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 

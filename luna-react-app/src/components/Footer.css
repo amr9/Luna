@@ -1,0 +1,25 @@
+.footer-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.footer-logo img {
+    width: 40px;
+}
+
+.footer ul {
+    list-style: none;
+}
+
+.footer ul li {
+    margin: 0.5rem 0;
+}
+
+.footer {
+    background-color: #f8f8f8;
+    padding: 2rem;
+    text-align: left;
+    bottom: 0;
+    width: 100%;
+}

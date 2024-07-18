@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from hair_color_changer_app.views import HairColorChanger, Login, Logout, Register, UpdateUser
+from hair_color_changer_app.views import HairColorChanger, Login, Logout, Register, UpdateUser, UserImages
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -9,4 +9,5 @@ urlpatterns = [
     path('api/logout/', Logout.as_view()),
     path('api/register/', Register.as_view()),
     path('api/update_user/', UpdateUser.as_view()),
+    path('api/user_images/', UserImages.as_view()),
 ]

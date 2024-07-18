@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Authentication model for my custom user
 AUTH_USER_MODEL = "hair_color_changer_app.User"
 
 # Application definition
@@ -41,8 +42,10 @@ INSTALLED_APPS = [
     "hair_color_changer_app.apps.HairColorChangerAppConfig",
     'rest_framework',
     'rest_framework.authtoken',
+    'corsheaders',
 ]
 
+# Rest-framework definition
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
@@ -60,6 +63,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+]
+
+# Front-end/node port for server
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
 ]
 
 ROOT_URLCONF = 'Luna.urls'
@@ -67,7 +76,7 @@ ROOT_URLCONF = 'Luna.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
+        'DIRS': [os.path.join(BASE_DIR, 'luna-react-app/build')]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -132,5 +141,10 @@ STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
+
+# Add the build directory of your React app to the STATICFILES_DIRS
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'luna-react-app/build/static'),
+]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
