@@ -94,9 +94,41 @@
 }
 
 .Image-red {
-    width: 780px;
+    width: 100%;
     height: 300px;
     object-fit: cover;
 }
+.about {
+    margin: 50px;
+    padding: 25px;
+}
+.about-paragraph{
+    display: flex;
+    width: 35%;
+    background-color: #3e3e3e;
+    margin-left: 20px;
+    padding: 20px;
+    border-radius: 45px;
+    color: #ffffff;
+}
+.feature{
+    margin: 50px;
+    padding: 25px;
+    text-align: right;
+}
 
+.feature-content {
+    display: flex;
+    justify-content: flex-end;
+}
+.feature-paragraph{
+    display: flex;
+    justify-content: flex-end;
+    width: 35%;
+    background-color: #3e3e3e;
+    margin-left: 20px;
+    padding: 20px;
+    border-radius: 45px;
+    color: #ffffff;
+}
 

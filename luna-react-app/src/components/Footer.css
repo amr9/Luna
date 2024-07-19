@@ -1,4 +1,6 @@
 .footer-logo {
+    display: flex;
+    flex-direction: column;
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 1rem;
@@ -8,18 +10,27 @@
     width: 40px;
 }
 
-.footer ul {
+.footer-links ul {
     list-style: none;
 }
 
-.footer ul li {
+.footer-links ul li {
     margin: 0.5rem 0;
 }
 
 .footer {
+    display: flex;
     background-color: #f8f8f8;
-    padding: 2rem;
     text-align: left;
     bottom: 0;
     width: 100%;
+
+}
+.footer-content-logos a img{
+    width: 50px;;
+    flex-direction: row;
+}
+.footer-links {
+    display: flex;
+    flex-direction: row;
 }

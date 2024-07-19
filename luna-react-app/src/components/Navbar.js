@@ -51,8 +51,8 @@ const Navbar = () => {
             <nav className="nav">
                 <ul>
                     <li onClick={HomeClick}>Home</li>
-                    <li>label</li>
-                    <li>label</li>
+                    <li onClick={HomeClick}>About Us</li>
+                    <li onClick={HomeClick}>Feature</li>
                     <li>
                         <button className="sign-in" onClick={LoginClick}>Sign In</button>
                     </li>
