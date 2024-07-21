@@ -1,0 +1,31 @@
+.register-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin: auto;
+    padding: 10% 0;
+    flex-wrap: wrap;
+}
+
+.register-form {
+    margin: auto;
+}
+
+form div{
+    margin: 6px;
+}
+
+form input{
+    margin-left: 8px;
+}
+
+.register-button-container {
+    display: flex;
+    margin-left: 25%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

@@ -18,6 +18,12 @@
     margin: 0.5rem 0;
 }
 
+.logos-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .footer {
     display: flex;
     background-color: #f8f8f8;
@@ -27,8 +33,7 @@
 
 }
 .footer-content-logos a img{
-    width: 50px;;
-    flex-direction: row;
+    width: 50px;
 }
 .footer-links {
     display: flex;

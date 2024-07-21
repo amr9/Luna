@@ -1,0 +1,23 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    flex-wrap: wrap;
+}
+
+.login-form {
+    margin: auto;
+}
+
+form div{
+    margin: 6px;
+}
+
+form input{
+    margin-left: 8px;
+}
+
+.login-button-container {
+
+    margin-left: 25%;
+}

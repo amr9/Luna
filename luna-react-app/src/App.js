@@ -5,19 +5,18 @@ import Login from './components/Login';
 import HomePage from "./components/Homepage";
 import RegistrationForm from './components/Registerationform';
 import Footer from './components/Footer';
+
 const App = () => {
     return (
-        <div className="App">
-            <BrowserRouter>
-                <Navbar />
-                <Routes>
-                    <Route path="/login" Component={Login} />
-                    <Route path="/Register" Component={RegistrationForm} />
-                    <Route path="/" Component={HomePage} />
-                </Routes>
-                <Footer/>
-            </BrowserRouter>
-        </div>
+        <BrowserRouter>
+            <Navbar />
+            <Routes>
+                <Route path="/login" Component={Login} />
+                <Route path="/Register" Component={RegistrationForm} />
+                <Route path="/" Component={HomePage} />
+            </Routes>
+            <Footer/>
+        </BrowserRouter>
     );
 };
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import './Login.css'
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -37,11 +37,12 @@ const Login = () => {
     };
 
     return (
-        <div>
-            <h2>Login</h2>
-            <form onSubmit={handleLogin}>
+        <div className="login-container">
+            <form className="login-form" onSubmit={handleLogin}>
+                <h2>Login</h2>
                 <div>
-                    <label>Username</label>
+                    <label>Username:</label>
+                    <br/>
                     <input
                         type="text"
                         value={username}
@@ -49,14 +50,17 @@ const Login = () => {
                     />
                 </div>
                 <div>
-                    <label>Password</label>
+                    <label>Password:</label>
+                    <br/>
                     <input
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
-                <button type="submit">Login</button>
+                <div className="login-button-container">
+                    <button type="submit">Login</button>
+                </div>
             </form>
             {error && <div style={{ color: 'red' }}>
                 {Object.keys(error).map(key => (

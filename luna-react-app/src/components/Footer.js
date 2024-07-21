@@ -9,7 +9,7 @@ const Footer = () =>{
 
     return (
         <footer className="footer">
-            <ul className="logo-list">
+            <div className="logos-container">
                 <div className="footer-logo">
                     <img src="luna.png" alt="Luna logo" onClick={HomeClick}/>
                 </div>
@@ -21,7 +21,7 @@ const Footer = () =>{
                         <img src={require("./linkedin.png")} alt="Linkedin logo"/>
                     </a>
                 </div>
-            </ul>
+            </div>
             <div className="footer-links">
                 <ul>
                     <li onClick={HomeClick}>Home</li>

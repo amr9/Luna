@@ -1,5 +1,9 @@
 .homepage {
+    display: flex;
+    flex-direction: column;
     font-family: Arial, sans-serif;
+    flex: 1;
+    justify-content: space-around;
 }
 
 .hero {
@@ -54,6 +58,8 @@
 }
 
 .quotes {
+    display: flex;
+    flex-direction: column;
     padding: 2rem;
     text-align: center;
 }
@@ -99,11 +105,12 @@
     object-fit: cover;
 }
 .about {
+    display: flex;
+    flex-direction: column;
     margin: 50px;
     padding: 25px;
 }
 .about-paragraph{
-    display: flex;
     width: 35%;
     background-color: #3e3e3e;
     margin-left: 20px;
@@ -112,21 +119,17 @@
     color: #ffffff;
 }
 .feature{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     margin: 50px;
     padding: 25px;
-    text-align: right;
 }
 
-.feature-content {
-    display: flex;
-    justify-content: flex-end;
-}
 .feature-paragraph{
-    display: flex;
-    justify-content: flex-end;
     width: 35%;
     background-color: #3e3e3e;
-    margin-left: 20px;
+    margin-right: 20px;
     padding: 20px;
     border-radius: 45px;
     color: #ffffff;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Modal from './Modal';
-
+import './Regesterationform.css'
 const RegistrationForm = () => {
     const [formData, setFormData] = useState({
         first_name: '',
@@ -62,11 +62,12 @@ const RegistrationForm = () => {
     };
 
     return (
-        <div>
-            <h2>Register</h2>
-            <form onSubmit={handleSubmit}>
+        <div className="register-container">
+            <form className="register-form" onSubmit={handleSubmit}>
+                <h2>Register</h2>
                 <div>
-                    <label>First Name</label>
+                    <label>First Name:</label>
+                    <br/>
                     <input
                         type="text"
                         name="first_name"
@@ -76,7 +77,8 @@ const RegistrationForm = () => {
                     />
                 </div>
                 <div>
-                    <label>Last Name</label>
+                    <label>Last Name:</label>
+                    <br/>
                     <input
                         type="text"
                         name="last_name"
@@ -86,7 +88,8 @@ const RegistrationForm = () => {
                     />
                 </div>
                 <div>
-                    <label>Phone Number</label>
+                    <label>Phone Number:</label>
+                    <br/>
                     <input
                         type="text"
                         name="phone_number"
@@ -95,7 +98,8 @@ const RegistrationForm = () => {
                     />
                 </div>
                 <div>
-                    <label>Email</label>
+                    <label>Email:</label>
+                    <br/>
                     <input
                         type="email"
                         name="email"
@@ -105,16 +109,20 @@ const RegistrationForm = () => {
                     />
                 </div>
                 <div>
-                    <label>Age</label>
+                    <label>Age:</label>
+                    <br/>
                     <input
                         type="number"
                         name="age"
+                        min="10"
+                        step="1"
                         value={formData.age}
                         onChange={handleChange}
                     />
                 </div>
                 <div>
-                    <label>Profile Image</label>
+                    <label>Profile Image:</label>
+                    <br/>
                     <input
                         type="file"
                         name="profile_image"
@@ -122,7 +130,8 @@ const RegistrationForm = () => {
                     />
                 </div>
                 <div>
-                    <label>Username</label>
+                    <label>Username:</label>
+                    <br/>
                     <input
                         type="text"
                         name="username"
@@ -132,7 +141,8 @@ const RegistrationForm = () => {
                     />
                 </div>
                 <div>
-                    <label>Password</label>
+                    <label>Password:</label>
+                    <br/>
                     <input
                         type="password"
                         name="password"
@@ -141,7 +151,10 @@ const RegistrationForm = () => {
                         required
                     />
                 </div>
-                <button type="submit">Register</button>
+                <br/>
+                <div className="register-button-container">
+                    <button type="submit">Register</button>
+                </div>
             </form>
             <Modal show={!!error} onClose={closeModal} message={error} />
             <Modal show={success} onClose={closeModal} message="Registration successful!" />

@@ -44,35 +44,32 @@ const HomePage = () => {
                 </div>
             </section>
             <section className="about">
-                <div className="about-content">
-                    <h1>About Us</h1>
-                    <p className="about-paragraph">
-                        Welcome to Luna, where we believe that your hair is the ultimate canvas for self-expression. Our innovative hair dye products are designed to bring out the vibrant,
-                        bold, and beautiful colors that reflect your unique personality. Whether you're looking to make a subtle change or a dramatic transformation, our high-quality dyes offer a spectrum of shades to suit every style.
-                        At Luna, we are committed to using safe, cruelty-free ingredients that nourish your hair while providing long-lasting, brilliant color. Our easy-to-use formulas ensure a seamless application process,
-                        allowing you to achieve salon-quality results from the comfort of your home.
-                        Join us on a journey of self-discovery and creativity. Embrace the power of color and let your true self shine through with Luna.
-                    </p>
-                </div>
+                <h1>About Us</h1>
+                <p className="about-paragraph">
+                    Welcome to Luna, where we believe that your hair is the ultimate canvas for self-expression. Our innovative hair dye products are designed to bring out the vibrant,
+                    bold, and beautiful colors that reflect your unique personality. Whether you're looking to make a subtle change or a dramatic transformation, our high-quality dyes offer a spectrum of shades to suit every style.
+                    At Luna, we are committed to using safe, cruelty-free ingredients that nourish your hair while providing long-lasting, brilliant color. Our easy-to-use formulas ensure a seamless application process,
+                    allowing you to achieve salon-quality results from the comfort of your home.
+                    Join us on a journey of self-discovery and creativity. Embrace the power of color and let your true self shine through with Luna.
+                </p>
+
             </section>
             <section className="feature">
                 <h1>Feature</h1>
-                <div className="feature-content">
-                    <p className="feature-paragraph">
-                        Our hair dye project offers an extensive palette of vibrant and bold colors, allowing you to
-                        discover the perfect shade that matches your personality and style.
-                        The easy-to-use formulas ensure a seamless application process, enabling you to achieve
-                        salon-quality results from the comfort of your home. Each dye kit comes with step-by-step
-                        instructions,
-                        making the coloring experience hassle-free and enjoyable. Enriched with nourishing ingredients,
-                        our hair dyes maintain the health and shine of your hair,
-                        providing vibrant, long-lasting color that remains fade-resistant for weeks. We prioritize
-                        safety and ethics, ensuring all our products are cruelty-free and made with high-quality, safe
-                        ingredients.
-                        Transform your look and express your individuality with our premium hair dyes—color your world,
-                        one strand at a time!
-                    </p>
-                </div>
+                <p className="feature-paragraph">
+                    Our hair dye project offers an extensive palette of vibrant and bold colors, allowing you to
+                    discover the perfect shade that matches your personality and style.
+                    The easy-to-use formulas ensure a seamless application process, enabling you to achieve
+                    salon-quality results from the comfort of your home. Each dye kit comes with step-by-step
+                    instructions,
+                    making the coloring experience hassle-free and enjoyable. Enriched with nourishing ingredients,
+                    our hair dyes maintain the health and shine of your hair,
+                    providing vibrant, long-lasting color that remains fade-resistant for weeks. We prioritize
+                    safety and ethics, ensuring all our products are cruelty-free and made with high-quality, safe
+                    ingredients.
+                    Transform your look and express your individuality with our premium hair dyes—color your world,
+                    one strand at a time!
+                </p>
             </section>
         </div>
     );
