@@ -1,4 +1,5 @@
 import base64
+from django.core.files.base import ContentFile
 from rest_framework import serializers
 from hair_color_changer_app.models import User, Image
 from PIL import Image as PilImage
@@ -16,6 +17,28 @@ def image_to_base64(image_file):
         return image_base64
     except Exception as e:
         raise serializers.ValidationError("Error converting image to Base64") from e
+
+# TODO make function that changes base64 to image and return to front or make it in front directly
+# def base64_to_image(base64_string):
+#     try:
+#         # Decode the Base64 string into binary data
+#         image_data = base64.b64decode(base64_string)
+#
+#         # Load the binary data into a PIL Image
+#         image = PilImage.open(BytesIO(image_data))
+#
+#         # Save image to a BytesIO object
+#         buffer = BytesIO()
+#         image.save(buffer, format="JPEG")  # Adjust format if needed
+#         buffer.seek(0)
+#
+#         # Create a Django ContentFile object
+#         content_file = ContentFile(buffer.getvalue(), 'image.jpg')
+#
+#         return content_file
+#
+#     except (base64.binascii.Error, IOError) as e:
+#         raise ValueError("Error converting Base64 to image file") from e
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -91,18 +114,30 @@ class UserUpdateSerializer(serializers.ModelSerializer):
 class ImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Image
-        fields = ['image_id', 'image']
+        fields = ['image']
 
 
 class UserImageSerializer(serializers.ModelSerializer):
     images = serializers.SerializerMethodField()
+    # profile_image = serializers.SerializerMethodField()
 
     class Meta:
         model = User
-        fields = ['user_id', 'username', 'images']
+        fields = ['age', 'phone_number', 'first_name', 'last_name',
+                  'email', 'profile_image', 'username', 'images']
+
+    # def get_profile_image(self, obj):
+    #
+    #     base64_string = obj.profile_image
+    #     if not base64_string:
+    #         return None
+    #
+    #     return base64_to_image(base64_string)
+
 
     def get_images(self, obj):
         images = Image.objects.filter(user=obj)
+
         return ImageSerializer(images, many=True).data
 
 

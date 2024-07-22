@@ -4,6 +4,7 @@
     align-items: center;
     padding: 1rem 2rem;
     background-color: #fff;
+    flex-wrap: wrap;
 }
 
 .logo {
@@ -18,7 +19,15 @@
     list-style: none;
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
 }
+
+.nav-link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+}
+
 
 .nav ul li {
     display: inline;
@@ -36,6 +45,10 @@
 }
 
 .nav .register {
+    background-color: #000;
+    color: #fff;
+}
+.logout {
     background-color: #000;
     color: #fff;
 }

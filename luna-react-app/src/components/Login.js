@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './Login.css'
+import {useNavigate} from "react-router-dom";
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
+
+    const navigate = useNavigate();
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -17,6 +20,7 @@ const Login = () => {
             localStorage.setItem('token', token);
             setError(null);
             console.log(response.data.message);
+            navigate('/user');
         } catch (Error) {
             if (Error.response && Error.response.data) {
                  const errorData = Error.response.data.errors;
@@ -62,7 +66,7 @@ const Login = () => {
                     <button type="submit">Login</button>
                 </div>
             </form>
-            {error && <div style={{ color: 'red' }}>
+            {error && <div className="error-container">
                 {Object.keys(error).map(key => (
                     <div key={key}>{error[key].join(', ')}</div>
                 ))}

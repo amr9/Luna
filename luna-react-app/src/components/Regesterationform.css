@@ -8,7 +8,10 @@
 }
 
 .register-form {
-    margin: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
 }
 
 form div{
@@ -21,7 +24,7 @@ form input{
 
 .register-button-container {
     display: flex;
-    margin-left: 25%;
+    justify-content: center;
 }
 
 input::-webkit-outer-spin-button,

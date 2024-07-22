@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Modal from './Modal';
-import './Regesterationform.css'
+import './Regesterationform.css';
+import { useNavigate } from "react-router-dom";
+
 const RegistrationForm = () => {
     const [formData, setFormData] = useState({
         first_name: '',
@@ -15,6 +16,7 @@ const RegistrationForm = () => {
     const [profileImage, setProfileImage] = useState(null);
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(false);
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -46,19 +48,24 @@ const RegistrationForm = () => {
             console.log('User registered successfully', response.data);
             setSuccess(true);
             setError(null);
-        } catch (error) {
-            if (error.response && error.response.data) {
-                setError(error.response.data);
-            } else {
-                setError('Something went wrong. Please try again.');
-            }
-            setSuccess(false);
-        }
-    };
+            navigate('/login');
+        } catch (Error){
+            if (Error.response && Error.response.data) {
+                const errorData = Error.response.data;
+                const formattedErrors = {};
 
-    const closeModal = () => {
-        setError(null);
-        setSuccess(false);
+                for (const key in errorData) {
+                    formattedErrors[key] = Array.isArray(errorData[key])
+                        ? errorData[key]
+                        : [errorData[key]];
+                }
+
+                setError(formattedErrors);
+                console.log(formattedErrors);
+            } else {
+                setError(['Something went wrong. Please try again.']);
+            }
+        }
     };
 
     return (
@@ -67,7 +74,7 @@ const RegistrationForm = () => {
                 <h2>Register</h2>
                 <div>
                     <label>First Name:</label>
-                    <br/>
+                    <br />
                     <input
                         type="text"
                         name="first_name"
@@ -78,7 +85,7 @@ const RegistrationForm = () => {
                 </div>
                 <div>
                     <label>Last Name:</label>
-                    <br/>
+                    <br />
                     <input
                         type="text"
                         name="last_name"
@@ -89,7 +96,7 @@ const RegistrationForm = () => {
                 </div>
                 <div>
                     <label>Phone Number:</label>
-                    <br/>
+                    <br />
                     <input
                         type="text"
                         name="phone_number"
@@ -99,7 +106,7 @@ const RegistrationForm = () => {
                 </div>
                 <div>
                     <label>Email:</label>
-                    <br/>
+                    <br />
                     <input
                         type="email"
                         name="email"
@@ -110,7 +117,7 @@ const RegistrationForm = () => {
                 </div>
                 <div>
                     <label>Age:</label>
-                    <br/>
+                    <br />
                     <input
                         type="number"
                         name="age"
@@ -122,7 +129,7 @@ const RegistrationForm = () => {
                 </div>
                 <div>
                     <label>Profile Image:</label>
-                    <br/>
+                    <br />
                     <input
                         type="file"
                         name="profile_image"
@@ -131,7 +138,7 @@ const RegistrationForm = () => {
                 </div>
                 <div>
                     <label>Username:</label>
-                    <br/>
+                    <br />
                     <input
                         type="text"
                         name="username"
@@ -142,7 +149,7 @@ const RegistrationForm = () => {
                 </div>
                 <div>
                     <label>Password:</label>
-                    <br/>
+                    <br />
                     <input
                         type="password"
                         name="password"
@@ -151,13 +158,17 @@ const RegistrationForm = () => {
                         required
                     />
                 </div>
-                <br/>
+                <br />
                 <div className="register-button-container">
                     <button type="submit">Register</button>
                 </div>
             </form>
-            <Modal show={!!error} onClose={closeModal} message={error} />
-            <Modal show={success} onClose={closeModal} message="Registration successful!" />
+            {error && <div className="error-container">
+                {Object.keys(error).map(key => (
+                    <div key={key}>{error[key].join(', ')}</div>
+                ))}
+            </div>}
+            {success && <div className="success-message">Registration successful!</div>}
         </div>
     );
 };

@@ -11,7 +11,7 @@ const HomePage = () => {
 
     return (
         <div className="homepage">
-            <section className="hero">
+            <section id="home" className="hero">
                 <div className="hero-content">
                     <h1>Luna</h1>
                     <p>Embrace the Spectrum – Dye Your Dreams!</p>
@@ -43,7 +43,7 @@ const HomePage = () => {
                     {/* Repeat the above quote-card div as needed */}
                 </div>
             </section>
-            <section className="about">
+            <section id="about-us" className="about">
                 <h1>About Us</h1>
                 <p className="about-paragraph">
                     Welcome to Luna, where we believe that your hair is the ultimate canvas for self-expression. Our innovative hair dye products are designed to bring out the vibrant,
@@ -54,7 +54,7 @@ const HomePage = () => {
                 </p>
 
             </section>
-            <section className="feature">
+            <section id="feature" className="feature">
                 <h1>Feature</h1>
                 <p className="feature-paragraph">
                     Our hair dye project offers an extensive palette of vibrant and bold colors, allowing you to

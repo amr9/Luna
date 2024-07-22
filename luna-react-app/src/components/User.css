@@ -1,0 +1,24 @@
+.user-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-left: 2rem;
+}
+
+.user-name-image {
+  display: flex;
+}
+
+.profile-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  align-content: center;
+
+}
+
+.user-name {
+  font-size: 1rem;
+  margin: 10px;
+}

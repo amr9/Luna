@@ -6,9 +6,11 @@
 }
 
 .login-form {
-    margin: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
 }
-
 form div{
     margin: 6px;
 }
@@ -18,6 +20,14 @@ form input{
 }
 
 .login-button-container {
+    display: flex;
+    justify-content: center;
+}
 
-    margin-left: 25%;
+.error-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    color: red;
 }

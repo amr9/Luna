@@ -30,10 +30,11 @@
     text-align: left;
     bottom: 0;
     width: 100%;
+    flex-wrap: wrap;
 
 }
 .footer-content-logos a img{
-    width: 50px;
+    width: 35px;
 }
 .footer-links {
     display: flex;
