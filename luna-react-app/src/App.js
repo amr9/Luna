@@ -6,6 +6,7 @@ import HomePage from "./components/Homepage";
 import RegistrationForm from './components/Registerationform';
 import Footer from './components/Footer';
 import User from './components/User';
+import UserUpdate from './components/UserUpdate';
 
 const App = () => {
     return (
@@ -16,6 +17,7 @@ const App = () => {
                 <Route path="/Register" Component={RegistrationForm} />
                 <Route path="/" Component={HomePage} />
                 <Route path="/user" Component={User} />
+                <Route path="/user/user-update" Component={UserUpdate} />
             </Routes>
             <Footer/>
         </BrowserRouter>

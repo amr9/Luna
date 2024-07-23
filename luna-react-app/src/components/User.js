@@ -12,6 +12,7 @@ const User = () => {
   const [dyedImageUrl, setDyedImageUrl] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedColor, setSelectedColor] = useState("#000000");
+  const [images, setImages] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,7 +20,6 @@ const User = () => {
       const token = localStorage.getItem('token');
 
       if (!token) {
-        setFormError('User not authenticated');
         console.log('User not authenticated');
         setLoading(false);
         navigate('/login');
@@ -43,10 +43,18 @@ const User = () => {
           setProfileImageUrl(imageUrl);
         }
 
+        // Process and set images from the response
+        const processedImages = await Promise.all(userData.images.map(async (imageData) => {
+          const base64Response = await fetch(`data:image/jpeg;base64,${imageData.image}`);
+          const blob = await base64Response.blob();
+          return URL.createObjectURL(blob);
+        }));
+        setImages(processedImages);
+
         setUser(userData);
         console.log(userData);
       } catch (error) {
-        setError(error.response?.data?.error || 'Error fetching user data');
+        setError(error.response?.data?.error|| 'Error fetching user data');
       } finally {
         setLoading(false);
       }
@@ -69,9 +77,6 @@ const User = () => {
 
     if (!token) {
       setFormError('User not authenticated');
-      console.log('User not authenticated');
-      setLoading(false);
-      navigate('/login');
       return;
     }
 
@@ -108,39 +113,46 @@ const User = () => {
   if (error) return <p>Error: {error}</p>;
   if (!user) return <p>No user data found</p>;
 
+  const userDataClick = () => navigate('/user/user-update')
   return (
-    <div className="user-container">
-      <div className="user-name-image">
-        {profileImageUrl && (
-          <img src={profileImageUrl} alt={`${user.first_name} ${user.last_name}`} className="profile-image" />
-        )}
-        <h1 className="user-name">{user.username}</h1>
-      </div>
-      <div className="user-image-before-dye-container">
-        <form className="user-image-form" onSubmit={handleSubmit}>
-          <div>
-            <label>Upload Image:</label>
-            <br />
-            <input type="file" onChange={handleImageChange} />
-          </div>
-          <div>
-            <label>Choose Color:</label>
-            <br />
-            <input type="color" value={selectedColor} onChange={handleColorChange} />
-          </div>
-          <div className="dye-button-container">
-            <button type="submit">Dye</button>
-          </div>
-          {formError && <p className="error-text">{formError}</p>}
-        </form>
-      </div>
-      {dyedImageUrl && (
-        <div className="user-image-after-dye">
-          <h1 className="user-name">Uploaded Image</h1>
-          <img src={dyedImageUrl} alt={`${user.first_name} ${user.last_name} `} className="uploaded-image" />
+      <div className="user-container">
+        <div className="user-name-image">
+          {profileImageUrl && (
+              <img src={profileImageUrl} alt={`${user.first_name} ${user.last_name}`} className="profile-image"/>
+          )}
+          <h1 className="user-name">{user.username}</h1>
+          <button onClick={userDataClick} className="update-user-data">Update Data</button>
         </div>
-      )}
-    </div>
+        <div className="user-image-before-dye-container">
+          <form className="user-image-form" onSubmit={handleSubmit}>
+            <div>
+              <label>Upload Image:</label>
+              <br/>
+              <input type="file" onChange={handleImageChange}/>
+            </div>
+            <div>
+              <label>Choose Color:</label>
+              <br/>
+              <input type="color" value={selectedColor} onChange={handleColorChange}/>
+            </div>
+            <div className="dye-button-container">
+              <button type="submit">Dye</button>
+            </div>
+            {formError && <p className="error-text">{formError}</p>}
+          </form>
+        </div>
+        {dyedImageUrl && (
+            <div className="user-image-after-dye">
+              <h1 className="user-name">Uploaded Image</h1>
+              <img src={dyedImageUrl} alt={`${user.first_name} ${user.last_name}`} className="uploaded-image"/>
+            </div>
+        )}
+        <div className="user-images-container">
+          {images.map((imageUrl, index) => (
+              <img key={index} src={imageUrl} alt={`User-Image ${index + 1}`} className="user-images"/>
+          ))}
+        </div>
+      </div>
   );
 };
 

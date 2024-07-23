@@ -1,0 +1,29 @@
+.user-update-container{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-left: 2rem;
+}
+
+
+.user-update-form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+}
+
+.update-button-container {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+

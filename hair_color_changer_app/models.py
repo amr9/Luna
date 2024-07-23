@@ -1,6 +1,13 @@
 """ Defines models module"""
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+import base64
+
+
+def image_to_base64(filepath):
+    with open(filepath, "rb") as image_file:
+        base64_string = base64.b64encode(image_file.read()).decode('utf-8')
+    return base64_string
 
 
 class UserManager(BaseUserManager):
@@ -27,7 +34,7 @@ class User(AbstractBaseUser):
     updated_at = models.DateTimeField(auto_now=True)
     email = models.EmailField(unique=True)
     age = models.IntegerField(blank=True, null=True)
-    profile_image = models.TextField()
+    profile_image = models.TextField(default=image_to_base64('hair_color_changer_app/static/default-user-image.png'))
     username = models.CharField(max_length=255, unique=True)
     password = models.CharField(max_length=255)
 

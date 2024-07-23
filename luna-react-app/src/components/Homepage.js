@@ -1,13 +1,22 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './Homepage.css';
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
 const HomePage = () => {
 
-
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
+
+        useEffect(() => {
+        const token = localStorage.getItem('token');
+        setIsLoggedIn(!!token);
+    }, [location]);
+
     const LoginClick = () => navigate('/login');
     const RegisterClick = () => navigate('/register');
+
+
 
     return (
         <div className="homepage">
@@ -16,8 +25,12 @@ const HomePage = () => {
                     <h1>Luna</h1>
                     <p>Embrace the Spectrum – Dye Your Dreams!</p>
                     <div className="hero-buttons">
-                        <button className="sign-in" onClick={LoginClick}>Sign in</button>
-                        <button className="register" onClick={RegisterClick}>Register</button>
+                        {!isLoggedIn && (
+                        <>
+                            <button className="sign-in" onClick={LoginClick}>Sign In</button>
+                            <button className="register" onClick={RegisterClick}>Register</button>
+                        </>
+                    )}
                     </div>
                 </div>
                 <div className="hero-image">

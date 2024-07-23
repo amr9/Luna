@@ -133,6 +133,11 @@ class Register(APIView):
 class UpdateUser(APIView):
     permission_classes = (IsAuthenticated,)
 
+    def get(self, request):
+        user = request.user
+        serializer = UserUpdateSerializer(user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
     def put(self, request):
         user = request.user
         serializer = UserUpdateSerializer(user, data=request.data, partial=True)
