@@ -1,6 +1,7 @@
 import React from "react";
 import'./Footer.css'
 import {useNavigate} from "react-router-dom";
+import {HashLink as Link} from "react-router-hash-link";
 
 const Footer = () =>{
 
@@ -24,9 +25,9 @@ const Footer = () =>{
             </div>
             <div className="footer-links">
                 <ul>
-                    <li onClick={HomeClick}>Home</li>
-                    <li onClick={HomeClick}>About Us</li>
-                    <li onClick={HomeClick}>Feature</li>
+                    <li><Link smooth to="/#home" className="nav-link">Home</Link></li>
+                    <li><Link smooth to="/#home" className="nav-link">About Us</Link></li>
+                    <li><Link smooth to="/#home" className="nav-link">Feature</Link></li>
                 </ul>
             </div>
         </footer>

@@ -14,7 +14,7 @@ const Navbar = () => {
     useEffect(() => {
         const token = localStorage.getItem('token');
         setIsLoggedIn(!!token);
-    }, [location]); // Add location as a dependency
+    }, [location]);
 
     const LogoutClick = async () => {
         const token = localStorage.getItem('token');

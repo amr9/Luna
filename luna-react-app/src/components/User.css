@@ -22,3 +22,35 @@
   font-size: 1rem;
   margin: 10px;
 }
+
+.user-image-before-dye-container {
+  margin: 50px;
+}
+
+.user-image-form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+}
+
+.dye-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.uploaded-image {
+  width: 600px;
+}
+
+.user-image-after-dye {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.error-text {
+  color: red;
+}
+
+
