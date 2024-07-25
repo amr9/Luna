@@ -25,9 +25,9 @@ const Footer = () =>{
             </div>
             <div className="footer-links">
                 <ul>
-                    <li><Link smooth to="/#home" className="nav-link">Home</Link></li>
-                    <li><Link smooth to="/#about-us" className="nav-link">About Us</Link></li>
-                    <li><Link smooth to="/#feature" className="nav-link">Feature</Link></li>
+                    <li><Link smooth to="/#home" className="footer-link">Home</Link></li>
+                    <li><Link smooth to="/#about-us" className="footer-link">About Us</Link></li>
+                    <li><Link smooth to="/#feature" className="footer-link">Feature</Link></li>
                 </ul>
             </div>
         </footer>
