@@ -12,7 +12,7 @@ To get started with the Luna project, follow these steps:
 
 1. **Clone the repository:**
     ```sh
-    git clone https://github.com/amr8/Luna.git
+    git clone https://github.com/amr9/Luna.git
     cd Luna
     ```
 
